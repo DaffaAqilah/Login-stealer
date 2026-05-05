@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Cek Email</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-check">
+  <div class="card card-center">
+    <div class="icon-mail">✉️</div>
+    <h2>Cek Email Anda</h2>
+    <p>Kami telah mengirimkan tautan verifikasi ke email yang kamu daftarkan. Periksa kotak masuk atau folder spam.</p>
+    <a href="{{ url_for('main.index') }}" class="btn btn-secondary">Kembali ke Beranda</a>
+  </div>
+</body>
+</html>

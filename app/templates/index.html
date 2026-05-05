@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Datang</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-index">
+  <div class="hero">
+    <h1 class="hero-title">Pilih Hadiah Yang Anda Inginkan</h1>
+    <p class="hero-sub">Klik salah satu gambar untuk melanjutkan</p>
+    <div class="box-row">
+      {% for box in boxes %}
+      <a href="{{ url_for('auth.form', box_id=box.id) }}" class="box-card">
+        <img src="{{ box.img }}" alt="{{ box.label }}">
+        <div class="box-label">{{ box.label }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

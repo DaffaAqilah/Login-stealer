@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .password-cell {
+      font-family: monospace;
+      font-size: .85rem;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    .password-cell .blur {
+      filter: blur(4px);
+      transition: filter .2s;
+    }
+    .password-cell:hover .blur {
+      filter: blur(0);
+    }
+  </style>
+</head>
+<body class="page-admin">
+  <div class="admin-wrapper">
+    <header class="admin-header">
+      <h1>📊 Dashboard Admin</h1>
+      <a href="{{ url_for('admin.logout') }}" class="btn btn-danger">Logout</a>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% if users %}
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Box</th>
+            <th>Waktu Daftar</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td class="password-cell">
+              <span class="blur">{{ user.password }}</span>
+            </td>
+            <td>Box {{ user.box_id }}</td>
+            <td>{{ user.created_at.strftime('%d %b %Y, %H:%M') }}</td>
+            <td class="action-cell">
+              <a href="{{ url_for('admin.edit', user_id=user.id) }}"
+                 class="btn btn-sm btn-warning">Edit</a>
+              <form method="POST"
+                    action="{{ url_for('admin.delete', user_id=user.id) }}"
+                    style="display:inline"
+                    onsubmit="return confirm('Hapus data ini?')">
+                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      <div class="empty-state">Belum ada data yang masuk.</div>
+    {% endif %}
+  </div>
+</body>
+</html>

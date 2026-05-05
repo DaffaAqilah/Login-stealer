@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Data</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-form">
+  <div class="card">
+    <h2>✏️ Edit Data #{{ entry.id }}</h2>
+    <form method="POST">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email"
+               value="{{ entry.email }}" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+    </form>
+    <a href="{{ url_for('admin.dashboard') }}" class="back-link">← Kembali ke Dashboard</a>
+  </div>
+</body>
+</html>
