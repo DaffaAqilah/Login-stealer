@@ -1,6 +1,8 @@
-# 🔐 Login Stealer — Flask CRUD Project
+# Login Stealer — Flask CRUD Project
 
 Aplikasi web CRUD berbasis Flask + Python dengan konsep OOP. Dibuat sebagai proyek pembelajaran yang mencakup frontend, backend, dan database dalam satu codebase yang bersih.
+
+❗❗ **DO NOT USE THIS FOR CRIMINAL ACTIVITY, AUTHOR IS NOT RESPONSIBLE FOR YOUR MISBEHAVIOR**❗❗
 
 ---
 
@@ -59,7 +61,7 @@ git clone https://github.com/username/login-stealer.git
 cd login-stealer
 ```
 
-### 2. Buat virtual environment (opsional tapi disarankan)
+### 2. Buat virtual environment (Optional)
 
 ```bash
 python -m venv venv
@@ -166,7 +168,7 @@ Content-Type: application/json
 DELETE /api/admin/users/<id>
 ```
 
-> **Catatan:** Endpoint admin bergantung pada session cookie — pastikan Postman/Insomnia mengaktifkan **"Send Cookies"** dan **"Follow Redirects"**.
+> **Catatan:** Endpoint admin bergantung pada session cookie — pastikan API mengaktifkan **"Send Cookies"** dan **"Follow Redirects"**.
 
 ---
 
@@ -221,5 +223,5 @@ Project ini kompatibel untuk di-deploy ke **Vercel** dengan sedikit konfigurasi 
 
 ## 👤 Author
 
-**Arca** — Mahasiswa Semester 2  
-Praktikum Pemrograman Komputer
+Daffa Aqilah
+Mata Kuliah : Praktikum Pemrograman Komputer
