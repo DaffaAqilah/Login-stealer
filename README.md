@@ -295,5 +295,5 @@ Project ini kompatibel untuk di-deploy ke **Vercel** dengan sedikit konfigurasi 
 
 ## 👤 Author
 
-Daffa Aqilah
+Mohammad Daffa Aqilah
 Mata Kuliah : Praktikum Pemrograman Komputer
