@@ -4,7 +4,7 @@ Aplikasi web CRUD berbasis Flask + Python dengan konsep OOP. Dibuat sebagai proy
 
 ---
 
-## ✨ Fitur
+## ✨ Fitur Utama
 
 - Halaman utama dengan **6 image box** yang bisa diklik
 - Semua box mengarah ke **satu form terpusat** (`/form`) dengan `box_id` tersimpan via hidden field
@@ -215,7 +215,7 @@ Project ini kompatibel untuk di-deploy ke **Vercel** dengan sedikit konfigurasi 
 
 ## ⚠️ Disclaimer
 
-Project ini dibuat murni untuk **tujuan pembelajaran** mata kuliah Praktikum Pemrograman Komputer. Tidak ditujukan untuk penggunaan produksi atau aktivitas yang melanggar hukum.
+**Project ini dibuat murni untuk **tujuan pembelajaran** mata kuliah Praktikum Pemrograman Komputer. Tidak ditujukan untuk penggunaan produksi atau aktivitas yang melanggar hukum.**
 
 ---
 
