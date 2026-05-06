@@ -21,15 +21,18 @@ def submit():
 
     return jsonify({'status': 'ok', 'message': 'Data berhasil disimpan.', 'id': entry.id}), 201
 
-
 @api_bp.route('/admin/login', methods=['POST'])
 def admin_login():
-    data = request.get_json()
+    data = request.get_json(force=True, silent=True)
+
+    if not data:
+        return jsonify({'status': 'error', 'message': 'Body harus JSON.'}), 400
+
     if AdminUser.verify(data.get('username', ''), data.get('password', '')):
         session['admin_logged_in'] = True
         return jsonify({'status': 'ok', 'message': 'Login berhasil.'})
-    return jsonify({'status': 'error', 'message': 'Kredensial salah.'}), 401
 
+    return jsonify({'status': 'error', 'message': 'Kredensial salah.'}), 401
 
 @api_bp.route('/admin/users', methods=['GET'])
 def admin_users():
