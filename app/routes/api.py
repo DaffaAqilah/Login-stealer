@@ -73,4 +73,13 @@ def admin_delete(user_id):
     db.session.delete(entry)
     db.session.commit()
 
+
+@api_bp.route('/admin/users/<int:user_id>', methods=['GET'])
+def admin_get_user(user_id):
+    if not session.get('admin_logged_in'):
+        return jsonify({'status': 'error', 'message': 'Unauthorized.'}), 401
+
+    entry = UserSubmission.query.get_or_404(user_id)
+    return jsonify({'status': 'ok', 'data': entry.to_dict()})
+
     return jsonify({'status': 'ok', 'message': 'Data dihapus.'})
